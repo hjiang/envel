@@ -6,14 +6,17 @@ namespace envel {
 
 void GenElStr(const std::vector<std::string>& vars, std::ostream& os,
               std::function<const char*(const char*)> getenv) {
-  size_t i = 0;
-  size_t size = vars.size();
+  bool first = true;
   os << "(";
-  std::ranges::for_each(vars, [&getenv, &os, &i, size](const auto& var) {
-    os << '"' << var << "=" << getenv(var.c_str()) << '"';
-    if (i++ < size - 1) {
+  std::ranges::for_each(vars, [&getenv, &os, &first](const auto& var) {
+    auto value = getenv(var.c_str());
+    if (!value) return;
+    if (first) {
+      first = false;
+    } else {
       os << " ";
     }
+    os << '"' << var << "=" << value << '"';
   });
   os << ")";
 }

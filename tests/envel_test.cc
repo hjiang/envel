@@ -22,4 +22,16 @@ TEST_CASE("Existent env vars are included", "[envel]") {
   REQUIRE(ss.str() == "(\"HOME=/home\" \"USER=user\")");
 }
 
+TEST_CASE("Nonexistent env vars are not included", "[envel]") {
+  std::vector<std::string> vars = {"HOME", "USER"};
+  std::ostringstream ss;
+  GenElStr(vars, ss, [](const char* var) -> const char* {
+    if (std::strcmp("HOME", var) == 0) {
+      return "/home";
+    }
+    return nullptr;
+  });
+  REQUIRE(ss.str() == "(\"HOME=/home\")");
+}
+
 }  // namespace envel
