@@ -1,10 +1,11 @@
 #include "envel/envel.hh"
 
-#include <catch2/catch_test_macros.hpp>
 #include <cstring>
 #include <sstream>
 #include <string>
 #include <vector>
+
+#include "catch2/catch_test_macros.hpp"
 
 namespace envel {
 
@@ -30,6 +31,18 @@ TEST_CASE("Nonexistent env vars are not included", "[envel]") {
       return "/home";
     }
     return nullptr;
+  });
+  REQUIRE(ss.str() == "(\"HOME=/home\")");
+}
+
+TEST_CASE("Empty env vars are not included", "[envel]") {
+  std::vector<std::string> vars = {"HOME", "USER"};
+  std::ostringstream ss;
+  GenElStr(vars, ss, [](const char* var) -> const char* {
+    if (std::strcmp("HOME", var) == 0) {
+      return "/home";
+    }
+    return "";
   });
   REQUIRE(ss.str() == "(\"HOME=/home\")");
 }

@@ -10,7 +10,7 @@ void GenElStr(const std::vector<std::string>& vars, std::ostream& os,
   os << "(";
   std::ranges::for_each(vars, [&getenv, &os, &first](const auto& var) {
     auto value = getenv(var.c_str());
-    if (!value) return;
+    if (!value || std::strlen(value) == 0) return;
     if (first) {
       first = false;
     } else {
