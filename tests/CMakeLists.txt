@@ -1,0 +1,5 @@
+add_executable(envel_test envel_test.cc)
+target_link_libraries(envel_test PRIVATE Catch2::Catch2WithMain envel)
+target_compile_features(envel_test PUBLIC cxx_std_20)
+set_target_properties(envel_test PROPERTIES CXX_EXTENSIONS OFF)
+catch_discover_tests(envel_test)
