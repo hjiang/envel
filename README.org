@@ -4,7 +4,7 @@
 
   =envel= is a utility to record environment variables in a form that can be
   easily read by Emacs. It's written in C++ so that it can be run during shell
-  initialization without much impact.
+  initialization without noticable impact.
 
   It's used to make Emacs load shell environment variables even when it is not
   launched from a shell. See [[https://roamingbytes.substack.com/p/emacs-on-macos-preserving-the-correct-environment-1735d2e8cb88][this article]] for an explanation.
