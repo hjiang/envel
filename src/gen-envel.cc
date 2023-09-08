@@ -6,7 +6,7 @@
 #include "envel/envel.hh"
 
 int main(int argc, char* argv[]) {
-  argparse::ArgumentParser program("gen-envel", "0.0.1");
+  argparse::ArgumentParser program("gen-envel", "0.1.0");
   program.add_argument("--vars")
       .nargs(argparse::nargs_pattern::at_least_one)
       .required()
