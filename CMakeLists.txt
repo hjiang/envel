@@ -8,10 +8,6 @@ if(EXISTS "${LOC_PATH}")
     " to remove CMakeCache.txt and CMakeFiles.")
 endif()
 
-set(CMAKE_CXX_STANDARD 20 CACHE STRING "The C++ standard to use")
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
-
 function(set_default_props target)
   target_compile_features(${target} PRIVATE cxx_std_20)
   set_target_properties(${target} PROPERTIES CXX_EXTENSIONS OFF)
