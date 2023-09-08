@@ -1,3 +1,7 @@
 add_library(envel STATIC envel.cc)
-target_compile_features(envel PUBLIC cxx_std_20)
-set_target_properties(envel PROPERTIES CXX_EXTENSIONS OFF)
+set_default_props(envel)
+
+add_executable(gen-envel gen-envel.cc)
+set_default_props(gen-envel)
+target_link_libraries(gen-envel envel argparse)
+

@@ -20,7 +20,7 @@ TEST_CASE("Existent env vars are included", "[envel]") {
     }
     return nullptr;
   });
-  REQUIRE(ss.str() == "(\"HOME=/home\" \"USER=user\")");
+  REQUIRE(ss.str() == "(\n\"HOME=/home\"\n\"USER=user\"\n)\n");
 }
 
 TEST_CASE("Nonexistent env vars are not included", "[envel]") {
@@ -32,7 +32,7 @@ TEST_CASE("Nonexistent env vars are not included", "[envel]") {
     }
     return nullptr;
   });
-  REQUIRE(ss.str() == "(\"HOME=/home\")");
+  REQUIRE(ss.str() == "(\n\"HOME=/home\"\n)\n");
 }
 
 TEST_CASE("Empty env vars are not included", "[envel]") {
@@ -44,7 +44,7 @@ TEST_CASE("Empty env vars are not included", "[envel]") {
     }
     return "";
   });
-  REQUIRE(ss.str() == "(\"HOME=/home\")");
+  REQUIRE(ss.str() == "(\n\"HOME=/home\"\n)\n");
 }
 
 }  // namespace envel
