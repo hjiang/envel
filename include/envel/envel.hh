@@ -2,6 +2,7 @@
 #define ENVEL_ENVEL_HH
 
 #include <cstdlib>
+#include <functional>
 #include <iostream>
 #include <string>
 #include <vector>
